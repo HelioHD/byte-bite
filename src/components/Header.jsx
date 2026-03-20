@@ -32,27 +32,16 @@ export function Header() {
           </p>
         </div>
 
-        <aside className="header__art" aria-label="Arte dos personagens do projeto">
-          {characterArtLoaded ? (
+        {characterArtLoaded && (
+          <aside className="header__art" aria-label="Arte dos personagens do projeto">
             <img
               src={CHARACTER_SRC}
               alt="Personagens Byte & Bite"
               className="header__art-img"
               onError={() => setCharacterArtLoaded(false)}
             />
-          ) : (
-            <div className="header__art-fallback">
-              <div className="header__art-fallback__pair" aria-hidden>
-                <span className="header__art-bubble" />
-                <span className="header__art-bubble" />
-              </div>
-              <p className="header__art-hint">
-                Coloque sua ilustração em <strong>public/characters.png</strong> — os personagens aparecem
-                aqui.
-              </p>
-            </div>
-          )}
-        </aside>
+          </aside>
+        )}
       </div>
 
       <a
