@@ -1,12 +1,15 @@
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import "./App.css";
 import { Header } from "./components/Header";
 import { RestaurantMap } from "./components/RestaurantMap";
 import { RestaurantList } from "./components/RestaurantList";
 import { restaurantsMock } from "./data/restaurants";
-import { theme } from "./theme/theme";
+import { applyThemeToDocument } from "./theme/theme";
 
 function App() {
+  useLayoutEffect(() => {
+    applyThemeToDocument();
+  }, []);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(restaurantsMock[0].id);
 
@@ -34,22 +37,7 @@ function App() {
   );
 
   return (
-    <main
-      className="app"
-      style={{
-        "--bg": theme.colors.background,
-        "--surface": theme.colors.surface,
-        "--text": theme.colors.text,
-        "--muted": theme.colors.mutedText,
-        "--primary": theme.colors.primary,
-        "--primary-soft": theme.colors.primarySoft,
-        "--border": theme.colors.border,
-        "--accent": theme.colors.accent,
-        "--radius-md": theme.radius.md,
-        "--radius-lg": theme.radius.lg,
-        "--shadow-card": theme.shadow.card,
-      }}
-    >
+    <main className="app">
       <Header />
 
       <section className="app__content">

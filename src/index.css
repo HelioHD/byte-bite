@@ -1,11 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  --bg: #1200ff;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --text: #000000;
+  --text-on-dark: #ffffff;
+  --muted: #2a2a30;
+  --muted-on-dark: #f0f0f5;
+  --primary: #1200ff;
+  --primary-soft: #e8e8ff;
+  --border: #000000;
+  --panel-border: #000000;
+  --accent: #1200ff;
+  --white: #ffffff;
+  --stroke: 4px;
+  --comic-shadow: 6px 6px 0 #000000;
+}
 
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
   min-width: 320px;
-  color: #1f2937;
-  background-color: #f7f7f8;
+  color: var(--text-on-dark);
+  background-color: var(--bg);
 }
 
 * {
