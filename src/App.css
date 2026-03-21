@@ -25,6 +25,35 @@
   max-width: 640px;
 }
 
+.header__heading-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.header__avatar-wrap {
+  flex-shrink: 0;
+  padding: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: var(--stroke) solid var(--border);
+  box-shadow: var(--comic-shadow);
+  line-height: 0;
+  overflow: hidden;
+}
+
+.header__avatar {
+  display: block;
+  width: clamp(56px, 12vw, 88px);
+  height: clamp(56px, 12vw, 88px);
+  border-radius: 50%;
+  object-fit: contain;
+  object-position: center;
+  background: var(--primary);
+}
+
 .header h1 {
   margin: 12px 0 0;
   font-family: "Archivo Black", "Bungee", sans-serif;
@@ -40,6 +69,11 @@
     0 var(--stroke) 0 var(--border),
     0 calc(var(--stroke) * -1) 0 var(--border),
     3px 3px 0 var(--border);
+}
+
+.header__heading-row h1 {
+  margin: 0;
+  flex: 1 1 200px;
 }
 
 .header__logo-wrap {
@@ -86,26 +120,50 @@
   text-shadow: 2px 2px 0 var(--border);
 }
 
+.header__aside {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  min-width: 0;
+}
+
 .header__art {
   flex: 0 0 auto;
-  width: min(100%, 220px);
-  min-height: 140px;
+  width: min(100%, 440px);
+  min-height: 200px;
   border: var(--stroke) solid var(--border);
   background: var(--white);
   box-shadow: var(--comic-shadow);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 14px;
   overflow: hidden;
 }
 
 .header__art-img {
   width: 100%;
   height: auto;
-  max-height: 200px;
+  max-height: 280px;
   object-fit: contain;
   display: block;
+}
+
+.header__side-note {
+  width: min(100%, 440px);
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--white);
+  border: var(--stroke) solid var(--border);
+  box-shadow: var(--comic-shadow);
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.88rem, 1.8vw, 1rem);
+  line-height: 1.4;
+  color: var(--text);
+  text-align: left;
 }
 
 .whatsapp-button {
@@ -681,22 +739,119 @@
 }
 
 @media (max-width: 960px) {
+  .app {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  .header {
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
+  }
+
   .header__row {
     flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .header__title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .header__logo-wrap {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+  }
+
+  .header__heading-row {
+    margin-top: 0;
+    width: 100%;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .header__heading-row h1 {
+    text-align: center;
+    flex: 0 1 auto;
+  }
+
+  .header__subtitle {
+    max-width: 40ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header__aside {
+    align-items: stretch;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .header__art {
     width: 100%;
-    max-width: 320px;
+    max-width: none;
+  }
+
+  .header__side-note {
+    width: 100%;
+    max-width: none;
+    text-align: center;
   }
 
   .whatsapp-button {
     width: 100%;
+    max-width: 100%;
     align-self: stretch;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .app__content {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .app__panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .app__panel--map > .section-title {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .list-toolbar {
+    align-items: center;
+  }
+
+  .category-filter {
+    justify-content: center;
   }
 
   .map-wrapper {
