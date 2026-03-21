@@ -37,7 +37,7 @@
   flex-shrink: 0;
   padding: 6px;
   border-radius: 50%;
-  background: var(--primary);
+  background: var(--white);
   border: var(--stroke) solid var(--border);
   box-shadow: var(--comic-shadow);
   line-height: 0;
@@ -51,7 +51,7 @@
   border-radius: 50%;
   object-fit: contain;
   object-position: center;
-  background: var(--primary);
+  background: var(--white);
 }
 
 .header h1 {
@@ -120,6 +120,17 @@
   text-shadow: 2px 2px 0 var(--border);
 }
 
+.header__subtitle-link {
+  color: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.header__subtitle-link:hover {
+  color: var(--accent);
+}
+
 .header__aside {
   flex: 1 1 280px;
   display: flex;
@@ -166,7 +177,23 @@
   text-align: left;
 }
 
-.whatsapp-button {
+.header__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-self: flex-start;
+  width: 100%;
+  max-width: min(100%, 720px);
+}
+
+.header__cta-row .whatsapp-button,
+.header__cta-row .instagram-button {
+  flex: 1 1 220px;
+  max-width: 100%;
+}
+
+.whatsapp-button,
+.instagram-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -181,9 +208,10 @@
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  min-width: 260px;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  min-width: min(260px, 100%);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, color 0.15s ease;
   box-shadow: var(--comic-shadow);
+  text-align: center;
 }
 
 .whatsapp-button:hover {
@@ -192,7 +220,14 @@
   color: var(--accent);
 }
 
-.whatsapp-button:active {
+.instagram-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 var(--border);
+  color: #d62976;
+}
+
+.whatsapp-button:active,
+.instagram-button:active {
   transform: translate(4px, 4px);
   box-shadow: 2px 2px 0 var(--border);
 }
@@ -895,12 +930,21 @@
     text-align: center;
   }
 
-  .whatsapp-button {
+  .header__cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 100%;
+  }
+
+  .header__cta-row .whatsapp-button,
+  .header__cta-row .instagram-button {
+    flex: 0 0 auto;
     width: 100%;
     max-width: 100%;
     align-self: stretch;
     margin-left: 0;
     margin-right: 0;
+    min-width: 0;
   }
 
   .app__content {

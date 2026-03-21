@@ -30,7 +30,7 @@ export function Header() {
             <div className="header__avatar-wrap">
               <img
                 src={AVATAR_SRC}
-                alt="Helio"
+                alt="Hélio — retrato em cartoon"
                 className="header__avatar"
                 width={88}
                 height={88}
@@ -39,7 +39,11 @@ export function Header() {
             <h1>Meus restaurantes avaliados</h1>
           </div>
           <p className="header__subtitle">
-            Veja minhas notas e avaliações de cada restaurante, bar e café que seu amigo Hélio já visitou aqui em Brasília (por enquanto hahaha). 
+            Veja minhas notas e avaliações de cada restaurante, bar e café que seu amigo Hélio já visitou aqui em Brasília (por enquanto hahaha). Acompanhe também no Instagram{" "}
+            <a className="header__subtitle-link" href="https://www.instagram.com/reviews_do_helio/" target="_blank" rel="noopener noreferrer">
+              @reviews_do_helio
+            </a>
+            .
           </p>
         </div>
 
@@ -60,14 +64,24 @@ export function Header() {
         </div>
       </div>
 
-      <a
-        className="whatsapp-button"
-        href="https://wa.me/5561999827436?text=Oi%20Hélio%2C%20quero%20te%20indicar%20um%20restaurante!"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Indicar restaurante no WhatsApp
-      </a>
+      <div className="header__cta-row">
+        <a
+          className="instagram-button"
+          href="https://www.instagram.com/reviews_do_helio/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Seguir @reviews_do_helio no Instagram
+        </a>
+        <a
+          className="whatsapp-button"
+          href="https://wa.me/5561999827436?text=Oi%20Hélio%2C%20quero%20te%20indicar%20um%20restaurante!"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Indicar restaurante no WhatsApp
+        </a>
+      </div>
     </header>
   );
 }
