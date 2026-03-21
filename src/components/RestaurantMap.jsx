@@ -1,5 +1,6 @@
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { StarRating } from "./RestaurantList";
 
 function buildMarkerIcon(restaurant, isSelected) {
   const safeName = restaurant.name.replace(/"/g, "&quot;");
@@ -39,21 +40,36 @@ export function RestaurantMap({ restaurants, selectedRestaurantId, onSelectResta
             }}
           >
             <Popup>
-              <img
-                className="map-popup__image"
-                src={restaurant.imageUrl}
-                alt={`Foto do ${restaurant.name}`}
-                loading="lazy"
-              />
-              <strong>{restaurant.name}</strong>
-              <br />
-              {restaurant.neighborhood}
-              <br />
-              Nota: {restaurant.rating} estrelas
-              <div className="map-popup__actions">
-                <button className="map-popup__button" onClick={() => onSelectRestaurant(restaurant.id)}>
-                  Ver detalhes
-                </button>
+              <div className="map-popup">
+                <div className="map-popup__thumb">
+                  <img
+                    className="map-popup__image"
+                    src={restaurant.imageUrl}
+                    alt={`Foto do ${restaurant.name}`}
+                    loading="lazy"
+                  />
+                </div>
+                <p className="map-popup__name">{restaurant.name}</p>
+                <div className="map-popup__row">
+                  <span className="map-popup__label">Local</span>
+                  <span className="map-popup__value">{restaurant.neighborhood}</span>
+                </div>
+                <div className="map-popup__row map-popup__row--rating">
+                  <span className="map-popup__label">Nota</span>
+                  <span className="map-popup__stars">
+                    <StarRating rating={restaurant.rating} />
+                    <span className="map-popup__score">{restaurant.rating}/5</span>
+                  </span>
+                </div>
+                <div className="map-popup__actions">
+                  <button
+                    type="button"
+                    className="map-popup__button"
+                    onClick={() => onSelectRestaurant(restaurant.id, { scrollToList: true })}
+                  >
+                    Ver detalhes
+                  </button>
+                </div>
               </div>
             </Popup>
           </Marker>

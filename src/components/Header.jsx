@@ -40,7 +40,6 @@ export function Header() {
           </div>
           <p className="header__subtitle">
             Veja minhas notas e avaliações de cada restaurante, bar e café que seu amigo Hélio já visitou aqui em Brasília (por enquanto hahaha). 
-            Além disso, você pode visualizar facilmente cada local no Google Maps e no Waze.
           </p>
         </div>
 
@@ -63,7 +62,7 @@ export function Header() {
 
       <a
         className="whatsapp-button"
-        href="https://wa.me/5500000000000?text=Oi%20Helio%2C%20quero%20te%20indicar%20um%20restaurante!"
+        href="https://wa.me/5561999827436?text=Oi%20Hélio%2C%20quero%20te%20indicar%20um%20restaurante!"
         target="_blank"
         rel="noreferrer"
       >

@@ -1,4 +1,4 @@
-function StarRating({ rating }) {
+export function StarRating({ rating }) {
   const full = "★".repeat(rating);
   const empty = "☆".repeat(5 - rating);
   return (

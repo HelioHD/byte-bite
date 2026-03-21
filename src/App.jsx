@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import { Header } from "./components/Header";
 import { RestaurantMap } from "./components/RestaurantMap";
@@ -6,12 +6,29 @@ import { RestaurantList } from "./components/RestaurantList";
 import { restaurantsMock } from "./data/restaurants";
 import { applyThemeToDocument } from "./theme/theme";
 
+const LIST_SCROLL_BREAKPOINT = "(max-width: 960px)";
+
 function App() {
   useLayoutEffect(() => {
     applyThemeToDocument();
   }, []);
+  const listPanelRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(restaurantsMock[0].id);
+
+  const handleSelectRestaurant = useCallback((id, options) => {
+    setSelectedRestaurantId(id);
+    if (!options?.scrollToList || typeof window === "undefined") {
+      return;
+    }
+    const stackedLayout = window.matchMedia(LIST_SCROLL_BREAKPOINT).matches;
+    if (!stackedLayout) {
+      return;
+    }
+    requestAnimationFrame(() => {
+      listPanelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, []);
 
   const categories = useMemo(
     () => ["Todos", ...new Set(restaurantsMock.map((restaurant) => restaurant.category))],
@@ -46,18 +63,18 @@ function App() {
           <RestaurantMap
             restaurants={filteredRestaurants}
             selectedRestaurantId={safeSelectedRestaurantId}
-            onSelectRestaurant={setSelectedRestaurantId}
+            onSelectRestaurant={handleSelectRestaurant}
           />
         </div>
 
-        <div className="app__panel app__panel--list">
+        <div ref={listPanelRef} className="app__panel app__panel--list">
           <RestaurantList
             categories={categories}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
             restaurants={filteredRestaurants}
             selectedRestaurant={selectedRestaurant}
-            onSelectRestaurant={setSelectedRestaurantId}
+            onSelectRestaurant={handleSelectRestaurant}
           />
         </div>
       </section>
