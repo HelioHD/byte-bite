@@ -130,5 +130,86 @@ export const restaurantsMock = [
     coordinates: { lat: -15.75754133350506, lng: -47.89303343450321 },
     googleMapsUrl: "https://www.google.com.br/maps/place/Salada+Lanches/@-15.7577454,-47.8939086,18.25z/data=!4m6!3m5!1s0x935a3a3a6afcd6b9:0x93c96cd3ec74d297!8m2!3d-15.7576398!4d-47.8933086!16s%2Fg%2F11c6w18y2y?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D",
     wazeUrl: "https://www.waze.com/pt-BR/live-map/directions/br/df/salada-lanches?to=place.ChIJudb8ajo6WpMRl9J07NNsyZM",
+  },{
+    id: "helato-boreli",
+    name: "Gelato Borelli",
+    category: "Sorvetes",
+    neighborhood: "Asa Norte",
+    rating: 4.5,
+    description: "Melhor Gelato de Brasília.",
+    review:
+      "Se quiser fazer o dono do site feliz me leve para comer um Borelli. O lugar é bem arrumado fica aberto até umas 22:00 e todos os sabores são muito bons. Confesso pra vocês que o preço é um pouco salgado (25 reais +/-) Mas vale a pena não se preocupem!",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR12dNotJPZUqA6SGXo34NfEYmBlxV8nW3Nw&s",
+    mapLogoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR12dNotJPZUqA6SGXo34NfEYmBlxV8nW3Nw&s",
+    coordinates: { lat: -15.758549467424787, lng:-47.887338353372975 },
+    googleMapsUrl: "https://www.google.com.br/maps/place/Gelato+Borelli+Asa+Norte/@-15.7591287,-47.8882699,20z/data=!4m6!3m5!1s0x935a3bb5ffacb837:0x5d13f7778ed5e7da!8m2!3d-15.7585727!4d-47.8873464!16s%2Fg%2F11ss1w4q0h?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+    wazeUrl: "https://www.waze.com/pt-BR/live-map/directions/br/df/gelato-borelli-asa-norte?to=place.ChIJN7is_7U7WpMR2ufVjnf3E10",
+  },{
+    id: "cafe-e-um-cheiro",
+    name: "Café e um Chêro",
+    category: "Cafeteria",
+    neighborhood: "Asa Norte",
+    rating: 3,
+    description: "Cafeteria com várias opções de lanches",
+    review:
+      "Vivo uma relação de amor e ódio com essa cafeteria. Não acho que é o melhor café que já tomei, mas tem boas opções de cafés especiais. Além disso, acho um pouco caro para o que entrega (a comida é sempre morna), sem nada de especial: uma mistura de várias coisas que não tem sabor de nada, e isso vale para tudo no cardápio. Porém é um lugar ok se não tiver nenhuma outra opção.",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJPZkECkL4XyaUeCQxdYwEPUOuItz0_jeaw&s",
+    mapLogoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJPZkECkL4XyaUeCQxdYwEPUOuItz0_jeaw&s",
+    coordinates: { lat: -15.759102842627746, lng: -47.88778033670231 },
+    googleMapsUrl: "https://www.google.com.br/maps/place/Caf%C3%A9+e+um+Ch%C3%AAro+Asa+Norte/@-15.7589785,-47.888018,19.75z/data=!4m6!3m5!1s0x935a3a3690ef046f:0x25140488a5d0459b!8m2!3d-15.7591479!4d-47.8878529!16s%2Fg%2F11fx7p5ndn?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+    wazeUrl: "https://www.waze.com/pt-BR/live-map/directions/cafe-e-um-chero-cln-109-bl.-c-asa-norte?to=place.w.204539498.2045460520.36135928",
+  },{
+    id: "meatz-burguer",
+    name: "Meatz Burguer",
+    category: "Hamburguer",
+    neighborhood: "Asa Norte",
+    rating: 4.8,
+    description: "Hamburgueria com opções de hambúrgueres artesanais, acompanhamentos e sobremesas.",
+    review:
+      "Essa hamburgueria não é nada demais, mas entrega o que promete: um hambúrguer bem feito. O local é tranquilo, pensado pra você sentar, pedir e ir embora. Dá pra ir com a galera, claro, mas tem lugares melhores pra isso. A proposta aqui é comer e vazar mesmo. Atendimento sempre ok. O único ponto negativo é que sempre falta alguma coisa do cardápio, mas dá pra ignorar.",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVoRtqbg7li_hdKPQ0Ajwq2BRwrAQFhm-dvw&s",
+    mapLogoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVoRtqbg7li_hdKPQ0Ajwq2BRwrAQFhm-dvw&s",
+    coordinates: { lat: -15.758840373892808, lng: -47.88808176354467 },
+    googleMapsUrl: "https://www.google.com.br/maps/place/Meatz+Burger+-+Asa+Norte+-+Hamburgueria/@-15.7589785,-47.888018,19.75z/data=!4m6!3m5!1s0x935a39373d4c294b:0x3a9df77e4ed27f33!8m2!3d-15.7588579!4d-47.8881909!16s%2Fg%2F11h05f4wyx?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+    wazeUrl: "https://www.waze.com/pt-BR/live-map/directions/br/df/meatz-burger-asa-norte-hamburgueria?to=place.ChIJSylMPTc5WpMRM3_STn73nTo",
+  },
+  {
+    id: "ammo-burguer",
+    name: "AMMO Burguer",
+    category: "Hamburguer",
+    neighborhood: "Asa Norte",
+    rating: 4,
+    description: "Hamburgueria com opções de hambúrgueres artesanais, acompanhamentos e sobremesas.",
+    review:
+      "Pra falar a real: a comida não tem nada de errado, mas também não tem personalidade tudo muito igual, sem nenhum diferencial. O espaço é pequeno e parece mais pensado pro delivery do que pra receber cliente; se vai ter mesas, deveria investir um pouco mais na experiência.",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9fWvoljo2ES6JGKxVPv3HYH9QDg2635cbQ&s",
+    mapLogoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9fWvoljo2ES6JGKxVPv3HYH9QDg2635cbQ&s",
+    coordinates: { lat: -15.758595518847311, lng: -47.887957642922615 },
+    googleMapsUrl: "https://www.google.com.br/maps/place/AMMO+Burger/@-15.7583761,-47.8880998,20z/data=!4m6!3m5!1s0x935a3b61920e8c47:0xc0282e4d601b9406!8m2!3d-15.7586101!4d-47.8880249!16s%2Fg%2F11jcw2186q?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+    wazeUrl: "https://www.waze.com/pt-BR/live-map/directions/br/df/ammo-burger?to=place.ChIJR4wOkmE7WpMRBpQbYE0uKMA",
+  },{
+    id: "el-paso-cocina-mexicana",
+    name: "El Paso - Cocina Mexicana",
+    category: "Mexicana",
+    neighborhood: "Asa Norte",
+    rating: 3.5,
+    description: "Restaurante tématico mexicano, com comidas e bebidas tipicas.",
+    review:
+      "Um lugar famoso que já foi melhor — faz tempo que perdeu o sentido. Caro demais pro que entrega, e o atendimento é sofrível: parece que você precisa se humilhar pra ser atendido. É bastante procurado pra aniversários, e dá pra entender o porquê (opções de restaurantes temáticos em Brasília são escassas). Mas justamente por isso deveriam caprichar mais, pelo menos no atendimento.",
+    imageUrl:
+      "https://elpaso.com.br/wp-content/uploads/2015/01/asa-norte.jpg",
+    mapLogoUrl:
+      "https://elpaso.com.br/wp-content/uploads/2015/01/asa-norte.jpg",
+    coordinates: { lat: -15.758567123485781, lng:  -47.887587498079114 },
+    googleMapsUrl: "https://www.google.com.br/maps/place/Restaurante+El+Paso+-+Cocina+Mexicana+Asa+Norte/@-15.7586575,-47.8879362,20z/data=!4m6!3m5!1s0x935a3a36a2406153:0x95ac790a0e9f6b4!8m2!3d-15.7585786!4d-47.8876331!16s%2Fg%2F1pt_s8356?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+    wazeUrl: "https://www.waze.com/pt-BR/live-map/directions/el-paso-texas-restaurante-cln-110-bloco-b-18-asa-norte?to=place.w.204539498.2045460520.5117665",
   }
 ];
