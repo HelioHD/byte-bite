@@ -1,3 +1,7 @@
+import { useEffect, useMemo, useState } from "react";
+
+const PAGE_SIZE = 10;
+
 export function StarRating({ rating }) {
   const full = "★".repeat(rating);
   const empty = "☆".repeat(5 - rating);
@@ -17,6 +21,33 @@ export function RestaurantList({
   selectedRestaurant,
   onSelectRestaurant,
 }) {
+  const [page, setPage] = useState(1);
+  const pageCount = Math.max(1, Math.ceil(restaurants.length / PAGE_SIZE));
+
+  // Volta pra primeira página quando troca o filtro de categoria.
+  useEffect(() => {
+    setPage(1);
+  }, [selectedCategory]);
+
+  // Mantém a página válida caso a lista encolha.
+  useEffect(() => {
+    setPage((current) => Math.min(current, pageCount));
+  }, [pageCount]);
+
+  // Pula pra página do lugar selecionado (ex.: clique no mapa).
+  useEffect(() => {
+    if (!selectedRestaurant) return;
+    const index = restaurants.findIndex((restaurant) => restaurant.id === selectedRestaurant.id);
+    if (index >= 0) {
+      setPage(Math.floor(index / PAGE_SIZE) + 1);
+    }
+  }, [selectedRestaurant, restaurants]);
+
+  const pageItems = useMemo(
+    () => restaurants.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [restaurants, page]
+  );
+
   return (
     <div className="list-layout">
       <div className="list-toolbar">
@@ -53,7 +84,7 @@ export function RestaurantList({
                 <td colSpan={4}>Nenhum local nessa categoria — troque o filtro acima.</td>
               </tr>
             ) : (
-              restaurants.map((restaurant) => {
+              pageItems.map((restaurant) => {
                 const selected = selectedRestaurant?.id === restaurant.id;
                 return (
                   <tr
@@ -84,6 +115,40 @@ export function RestaurantList({
           </tbody>
         </table>
       </div>
+
+      {pageCount > 1 ? (
+        <nav className="pagination" aria-label="Paginação da lista">
+          <button
+            type="button"
+            className="pagination__btn"
+            onClick={() => setPage((current) => Math.max(1, current - 1))}
+            disabled={page === 1}
+            aria-label="Página anterior"
+          >
+            ‹
+          </button>
+          {Array.from({ length: pageCount }, (_, index) => index + 1).map((number) => (
+            <button
+              key={number}
+              type="button"
+              className={`pagination__btn ${page === number ? "pagination__btn--active" : ""}`}
+              onClick={() => setPage(number)}
+              aria-current={page === number ? "page" : undefined}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            type="button"
+            className="pagination__btn"
+            onClick={() => setPage((current) => Math.min(pageCount, current + 1))}
+            disabled={page === pageCount}
+            aria-label="Próxima página"
+          >
+            ›
+          </button>
+        </nav>
+      ) : null}
 
       {selectedRestaurant && restaurants.length > 0 ? (
         <article className="review-panel" aria-labelledby="review-panel-heading">

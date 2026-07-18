@@ -981,3 +981,236 @@
     height: 360px;
   }
 }
+
+/* ===== Abas Avaliados / Quero ir ===== */
+.view-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.view-tab {
+  flex: 0 1 auto;
+  background: var(--white);
+  color: var(--text);
+  border: var(--stroke) solid var(--border);
+  box-shadow: var(--comic-shadow);
+  padding: 12px 22px;
+  font-family: "Archivo Black", "Bungee", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.view-tab:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+
+.view-tab--active {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.view-tab--active:hover {
+  color: var(--white);
+}
+
+/* ===== Painel Quero ir ===== */
+.app__panel--wishlist {
+  background: var(--surface);
+  color: var(--text);
+  border: var(--stroke) solid var(--panel-border);
+  box-shadow: var(--comic-shadow);
+  padding: 16px;
+}
+
+.wishlist__hint {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.wishlist__empty {
+  margin: 18px 4px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.wish-grid {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.wish-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: var(--stroke) solid var(--border);
+  box-shadow: var(--comic-shadow);
+  overflow: hidden;
+}
+
+.wish-card__thumb {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  background: var(--surface-raised);
+  border-bottom: var(--stroke) solid var(--border);
+}
+
+.wish-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wish-card__tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--accent);
+  color: var(--white);
+  border: 3px solid var(--border);
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wish-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  flex: 1;
+}
+
+.wish-card__name {
+  margin: 0;
+  font-family: "Archivo Black", "Bungee", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.wish-card__hood {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.wish-card__wpp {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  padding: 11px 14px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: #128c3e;
+  border: var(--stroke) solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+}
+
+.wish-card__wpp:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--border);
+  background: #0f7a35;
+}
+
+.wish-card__links {
+  display: flex;
+  gap: 8px;
+}
+
+.wish-card__link {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 8px 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  border: 3px solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.wish-card__link:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--border);
+}
+
+.wish-card__link--outline {
+  background: var(--surface-raised);
+  color: var(--accent);
+}
+
+.wish-card__link--outline:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* ===== Paginação da lista ===== */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  padding: 14px 4px 4px;
+}
+
+.pagination__btn {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  background: var(--surface-raised);
+  color: var(--text);
+  border: 3px solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  font-family: "Archivo Black", "Bungee", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.pagination__btn:hover:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--border);
+}
+
+.pagination__btn--active {
+  background: var(--accent);
+  color: var(--white);
+  box-shadow: var(--comic-shadow);
+}
+
+.pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
