@@ -1,6 +1,46 @@
 import L from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+import "maplibre-gl/dist/maplibre-gl.css";
+import "@maplibre/maplibre-gl-leaflet";
+import { useEffect } from "react";
+import { MapContainer, Marker, Popup, useMap } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
 import { StarRating } from "./RestaurantList";
+
+// Standard light basemap (OpenFreeMap's "Positron" style), used as-is with no
+// color overrides — plain white/light-gray map with black text and roads.
+const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
+const STYLE_ATTRIBUTION =
+  '&copy; <a href="https://openfreemap.org">OpenFreeMap</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+function VectorBasemap() {
+  const map = useMap();
+
+  useEffect(() => {
+    const glLayer = L.maplibreGL({
+      style: STYLE_URL,
+      attribution: STYLE_ATTRIBUTION,
+    }).addTo(map);
+
+    return () => {
+      glLayer.remove();
+    };
+  }, [map]);
+
+  return null;
+}
+
+function createClusterIcon(cluster) {
+  const count = cluster.getChildCount();
+  const size = count < 10 ? 40 : count < 30 ? 48 : 56;
+
+  return L.divIcon({
+    className: "restaurant-cluster-marker__container",
+    html: `<div class="restaurant-cluster-marker">${count}</div>`,
+    iconSize: [size, size],
+  });
+}
 
 function buildMarkerIcon(restaurant, isSelected) {
   const safeName = restaurant.name.replace(/"/g, "&quot;");
@@ -24,56 +64,60 @@ export function RestaurantMap({ restaurants, selectedRestaurantId, onSelectResta
 
   return (
     <div className="map-wrapper">
-      <MapContainer center={center} zoom={12} scrollWheelZoom className="map">
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        />
+      <MapContainer center={center} zoom={12} maxZoom={19} scrollWheelZoom className="map">
+        <VectorBasemap />
 
-        {restaurants.map((restaurant) => (
-          <Marker
-            key={restaurant.id}
-            position={[restaurant.coordinates.lat, restaurant.coordinates.lng]}
-            icon={buildMarkerIcon(restaurant, selectedRestaurantId === restaurant.id)}
-            eventHandlers={{
-              click: () => onSelectRestaurant(restaurant.id),
-            }}
-          >
-            <Popup>
-              <div className="map-popup">
-                <div className="map-popup__thumb">
-                  <img
-                    className="map-popup__image"
-                    src={restaurant.imageUrl}
-                    alt={`Foto do ${restaurant.name}`}
-                    loading="lazy"
-                  />
+        <MarkerClusterGroup
+          iconCreateFunction={createClusterIcon}
+          maxClusterRadius={60}
+          spiderfyOnMaxZoom
+          showCoverageOnHover={false}
+        >
+          {restaurants.map((restaurant) => (
+            <Marker
+              key={restaurant.id}
+              position={[restaurant.coordinates.lat, restaurant.coordinates.lng]}
+              icon={buildMarkerIcon(restaurant, selectedRestaurantId === restaurant.id)}
+              eventHandlers={{
+                click: () => onSelectRestaurant(restaurant.id),
+              }}
+            >
+              <Popup>
+                <div className="map-popup">
+                  <div className="map-popup__thumb">
+                    <img
+                      className="map-popup__image"
+                      src={restaurant.imageUrl}
+                      alt={`Foto do ${restaurant.name}`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="map-popup__name">{restaurant.name}</p>
+                  <div className="map-popup__row">
+                    <span className="map-popup__label">Local</span>
+                    <span className="map-popup__value">{restaurant.neighborhood}</span>
+                  </div>
+                  <div className="map-popup__row map-popup__row--rating">
+                    <span className="map-popup__label">Nota</span>
+                    <span className="map-popup__stars">
+                      <StarRating rating={restaurant.rating} />
+                      <span className="map-popup__score">{restaurant.rating}/5</span>
+                    </span>
+                  </div>
+                  <div className="map-popup__actions">
+                    <button
+                      type="button"
+                      className="map-popup__button"
+                      onClick={() => onSelectRestaurant(restaurant.id, { scrollToList: true })}
+                    >
+                      Ver detalhes
+                    </button>
+                  </div>
                 </div>
-                <p className="map-popup__name">{restaurant.name}</p>
-                <div className="map-popup__row">
-                  <span className="map-popup__label">Local</span>
-                  <span className="map-popup__value">{restaurant.neighborhood}</span>
-                </div>
-                <div className="map-popup__row map-popup__row--rating">
-                  <span className="map-popup__label">Nota</span>
-                  <span className="map-popup__stars">
-                    <StarRating rating={restaurant.rating} />
-                    <span className="map-popup__score">{restaurant.rating}/5</span>
-                  </span>
-                </div>
-                <div className="map-popup__actions">
-                  <button
-                    type="button"
-                    className="map-popup__button"
-                    onClick={() => onSelectRestaurant(restaurant.id, { scrollToList: true })}
-                  >
-                    Ver detalhes
-                  </button>
-                </div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+              </Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
       </MapContainer>
     </div>
   );

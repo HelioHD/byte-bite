@@ -276,10 +276,6 @@
   background: #1200ff !important;
 }
 
-.app__panel--map .leaflet-tile-pane {
-  filter: brightness(0.9) saturate(1.55) hue-rotate(268deg);
-}
-
 .app__panel--map .leaflet-control-zoom a {
   background-color: var(--white) !important;
   color: #1200ff !important;
@@ -333,6 +329,26 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.restaurant-cluster-marker__container {
+  background: transparent;
+  border: 0;
+}
+
+.restaurant-cluster-marker {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: var(--stroke) solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  background: var(--accent);
+  color: var(--white);
+  font-family: "Archivo Black", "Bungee", sans-serif;
+  font-size: 0.95rem;
 }
 
 .map-popup {
