@@ -157,6 +157,10 @@ export function RestaurantList({
               className="review-panel__image"
               src={selectedRestaurant.imageUrl}
               alt={`Foto do ${selectedRestaurant.name}`}
+              onError={(event) => {
+                event.currentTarget.onerror = null;
+                event.currentTarget.src = "/images/placeholder-restaurant.svg";
+              }}
             />
             <div className="review-panel__intro">
               <p className="review-panel__eyebrow">Review selecionado</p>

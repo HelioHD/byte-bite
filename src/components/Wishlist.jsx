@@ -44,6 +44,10 @@ export function Wishlist({
                   src={restaurant.imageUrl}
                   alt={`Foto do ${restaurant.name}`}
                   loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src = "/images/placeholder-restaurant.svg";
+                  }}
                 />
                 <span className="wish-card__tag">{restaurant.category}</span>
               </div>

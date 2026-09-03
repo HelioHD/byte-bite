@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#e8e2d8"/>
+  <g fill="none" stroke="#b8ab97" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M140 90 v60 M140 90 a12 12 0 0 1 0 60 M160 90 v120 M180 90 v60 M180 90 a12 12 0 0 0 0 60 M170 90 v120"/>
+    <path d="M240 90 c-18 0-28 20-28 45 s10 30 28 30 v75"/>
+  </g>
+  <text x="200" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#8a7d68">Sem foto</text>
+</svg>

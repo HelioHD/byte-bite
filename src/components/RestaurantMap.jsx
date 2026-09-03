@@ -50,7 +50,7 @@ function buildMarkerIcon(restaurant, isSelected) {
     className: "restaurant-logo-marker__container",
     html: `
       <div class="restaurant-logo-marker ${isSelected ? "restaurant-logo-marker--selected" : ""}">
-        <img src="${logo}" alt="Logo ${safeName}" />
+        <img src="${logo}" alt="Logo ${safeName}" onerror="this.onerror=null;this.src='/images/placeholder-restaurant.svg';" />
       </div>
     `,
     iconSize: [54, 54],
@@ -90,6 +90,10 @@ export function RestaurantMap({ restaurants, selectedRestaurantId, onSelectResta
                       src={restaurant.imageUrl}
                       alt={`Foto do ${restaurant.name}`}
                       loading="lazy"
+                      onError={(event) => {
+                        event.currentTarget.onerror = null;
+                        event.currentTarget.src = "/images/placeholder-restaurant.svg";
+                      }}
                     />
                   </div>
                   <p className="map-popup__name">{restaurant.name}</p>
